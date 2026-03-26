@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id            String        @id @default(cuid())
+  name          String?
+  email         String?       @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          Role          @default(EDITOR)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  activities    ActivityLog[]
+}
+
+model Project {
+  id          String         @id @default(cuid())
+  titleEn     String
+  titleBn     String
+  slug        String         @unique
+  descriptionEn String      @db.Text
+  descriptionBn String      @db.Text
+  categoryEn  String
+  categoryBn  String
+  status      String         // ONGOING, COMPLETED
+  year        Int
+  locationEn  String?
+  locationBn  String?
+  startDate   DateTime?
+  endDate     DateTime?
+  images      ProjectImage[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model ProjectImage {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  captionEn String?
+  captionBn String?
+  createdAt DateTime @default(now())
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  titleEn     String
+  titleBn     String
+  categoryEn  String
+  categoryBn  String
+  year        Int
+  fileUrl     String
+  fileType    String   // PDF, DOCX, etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  titleEn     String
+  titleBn     String
+  categoryEn  String
+  categoryBn  String
+  year        Int
+  fileUrl     String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model News {
+  id          String   @id @default(cuid())
+  titleEn     String
+  titleBn     String
+  slug        String   @unique
+  contentEn   String   @db.Text
+  contentBn   String   @db.Text
+  excerptEn   String?  @db.Text
+  excerptBn   String?  @db.Text
+  coverImage  String?
+  published   Boolean  @default(false)
+  isUrgent    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  body      String   @db.Text
+  resolved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String   // CREATE, UPDATE, DELETE, LOGIN
+  entity    String   // Project, News, etc.
+  entityId  String?
+  createdAt DateTime @default(now())
+}
+
+model Employee {
+  id               String   @id @default(cuid())
+  nameEn           String
+  nameBn           String
+  designationEn    String
+  designationBn    String
+  phone            String?
+  email            String?
+  image            String?
+  responsibilitiesEn String? @db.Text
+  responsibilitiesBn String? @db.Text
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
