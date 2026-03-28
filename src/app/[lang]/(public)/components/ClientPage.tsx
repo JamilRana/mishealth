@@ -85,30 +85,37 @@ export function ClientPage({
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 
                     bg-brand-blue shadow-lg shadow-brand-blue/50"></span>
                 </span>
-                <span className="hidden sm:inline">System Status:</span> 
-                <span className="text-brand-blue font-black">Active</span>
+                <span className="hidden sm:inline">{dict.home.system_status}:</span> 
+                <span className="text-brand-blue font-black">{dict.home.active}</span>
               </div>
               
               {/* Hero Title */}
-              <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-black leading-[1.05] tracking-tight">
-                {dict.home.hero_title.split(' ').map((word: string, i: number) => {
-                  const isEmphasized = i % 3 === 2
-                  return (
-                    <React.Fragment key={i}>
-                      <span 
-                        className={cn(
-                          "inline-block transition-transform duration-300 hover:scale-105",
-                          isEmphasized && "font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple",
-                          prefersReducedMotion && "transition-none"
-                        )}
-                      >
-                        {word}
-                      </span>
-                      {' '}
-                    </React.Fragment>
-                  )
-                })}
-              </h1>
+<h1 
+  className={cn(
+    "max-w-4xl text-balance text-[clamp(3rem,8vw,4.5rem)] font-black tracking-tight",
+    isBn 
+      ? "leading-[1.5] py-4 font-[300]"  // More breathing room for Bengali
+      : "leading-[1.05] font-black",
+    "overflow-visible"
+  )}
+  lang={isBn ? "bn" : "en"}  // ✅ Proper language attribute
+>
+  {dict.home.hero_title.split(' ').map((word: string, i: number) => {
+    const isEmphasized = i % 2 === 1
+    return (
+      <span 
+        key={i}
+        className={cn(
+          "inline-block mr-2 transition-transform duration-300 hover:scale-105",
+          isEmphasized && "font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple pr-4",
+          prefersReducedMotion && "transition-none"
+        )}
+      >
+        {word}
+      </span>
+    )
+  })}
+</h1>
               
               {/* Subtitle */}
               <p className={cn(
@@ -130,7 +137,7 @@ export function ClientPage({
                       hover:bg-brand-blue hover:text-white font-bold text-base 
                       transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    Explore Projects
+                    {isBn ? "প্রকল্পসমূহ দেখুন" : "Explore Projects"}
                     <ArrowUpRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
@@ -230,30 +237,30 @@ export function ClientPage({
   </div>
 </section>
         {/* Core Operational Pillar Stats */}
-        <section className="py-24 relative">
+        <section className="py-24 relative bg-background">
           <div className="container mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
               {/* ✅ Fixed: String icon names + actual data */}
               <AnimatedStatCard icon={Database} label={dict.home.kpi_projects} value={initialProjects.length.toString()} note="National Integration" delay={0} />
               <AnimatedStatCard icon={Files} label={dict.home.kpi_docs} value={initialNews.length.toString()} note="Manuals & Resources" delay={200} />
               <AnimatedStatCard icon={FileText} label={dict.home.kpi_reports} value={initialReports.length.toString()} note="Official Audit Stream" delay={400} />
-              <AnimatedStatCard icon={Activity} label="System Events" value="9M+" note="Resolved Operations" delay={600} />
+              <AnimatedStatCard icon={Activity} label={dict.home.kpi_events} value="9M+" note={dict.home.kpi_events_note} delay={600} />
             </div>
           </div>
         </section>
 
         {/* Portfolio Showcase Section */}
-        <section className="py-24 md:py-32 bg-slate-50/50 dark:bg-black/40">
+        <section className="py-24 md:py-32 bg-secondary/30 dark:bg-secondary/20">
           <div className="container mx-auto px-6 md:px-12 space-y-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
-                  <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em] font-sans">Strategic Solutions</span>
+                  <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em] font-sans">{dict.home.strategic_solutions}</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground dark:text-white leading-tight max-w-2xl">
                   Defining national <br />
-                  <span className="italic font-serif font-normal text-brand-blue">{isBn ? 'ডিজিটাল উদ্ভাবন।' : 'digital innovation.'}</span>
+                  <span className="italic font-serif font-normal text-brand-blue">{isBn ? dict.home.digital_innovation : dict.home.digital_innovation}</span>
                 </h2>
               </div>
               <Link href={`/${lang}/projects`}>
@@ -267,8 +274,8 @@ export function ClientPage({
             {initialProjects.length === 0 ? (
               <div className="col-span-full py-20 text-center">
                 <Database className="h-16 w-16 mx-auto text-muted-foreground/20 mb-4" />
-                <h3 className="text-2xl font-black text-foreground mb-2">No Projects Yet</h3>
-                <p className="text-muted-foreground">Systems are being registered. Check back soon.</p>
+                <h3 className="text-2xl font-black text-foreground mb-2">{dict.home.no_projects}</h3>
+                <p className="text-muted-foreground">{dict.home.no_projects_desc}</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
@@ -291,7 +298,7 @@ export function ClientPage({
         </section>
 
         {/* Communication Feed Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-24 relative overflow-hidden bg-background">
           <div className="container mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-20">
               <div className="space-y-12">
@@ -300,7 +307,7 @@ export function ClientPage({
                     {dict.home.latest_bulletins}
                   </h2>
                   <p className="text-lg font-medium text-muted-foreground dark:text-gray-400">
-                    Stay informed with the latest directives, announcements, and policy adjustments within the national health MIS framework.
+                    {dict.home.bulletin_archive}
                   </p>
                 </div>
                 <Link href={`/${lang}/news`} className="block" aria-label="View all news bulletins and announcements">
@@ -309,8 +316,8 @@ export function ClientPage({
                       <Zap className="h-32 w-32" />
                     </div>
                     <div className="relative z-10 space-y-6">
-                      <h4 className="text-2xl font-black tracking-tight">{isBn ? 'সব খবর দেখুন' : 'Complete Bulletin Board'}</h4>
-                      <p className="text-white/60 font-medium">Archive of all major announcements from MIS - DGHS.</p>
+                      <h4 className="text-2xl font-black tracking-tight">{isBn ? dict.home.complete_bulletin_board : dict.home.complete_bulletin_board}</h4>
+                      <p className="text-white/60 font-medium">{dict.home.bulletin_archive}</p>
                       <ChevronRight className="h-8 w-8 text-white transition-transform group-hover:translate-x-4" />
                     </div>
                   </div>
@@ -322,8 +329,8 @@ export function ClientPage({
                 {initialNews.length === 0 ? (
                   <div className="col-span-full py-20 text-center">
                     <FileText className="h-16 w-16 mx-auto text-muted-foreground/20 mb-4" />
-                    <h3 className="text-2xl font-black text-foreground mb-2">No Bulletins</h3>
-                    <p className="text-muted-foreground">No announcements at this time.</p>
+                    <h3 className="text-2xl font-black text-foreground mb-2">{dict.home.no_bulletins}</h3>
+                    <p className="text-muted-foreground">{dict.home.no_bulletins_desc}</p>
                   </div>
                 ) : (
                   initialNews.slice(0, 4).map((n) => (
@@ -331,7 +338,7 @@ export function ClientPage({
                       <div className="bg-white dark:bg-black/20 border border-slate-100 dark:border-white/5 rounded-[2.5rem] p-10 hover:shadow-2xl transition-all duration-500 h-full flex flex-col space-y-6 group-hover:-translate-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-[10px] font-black text-brand-blue uppercase tracking-widest bg-brand-blue/10 px-3 py-1 rounded-full">
-                            {isBn ? 'অফিসিয়াল বার্তা' : 'Official Update'}
+                            {isBn ? dict.home.official_update : dict.home.official_update}
                           </span>
                           <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground uppercase opacity-60">
                             <Calendar className="h-3 w-3" /> {new Date(n.createdAt).toLocaleDateString()}
@@ -344,7 +351,7 @@ export function ClientPage({
                           {isBn ? n.excerptBn : n.excerptEn}
                         </p>
                         <div className="pt-6 border-t border-slate-50 dark:border-white/5 flex items-center justify-between">
-                          <span className="text-xs font-black uppercase tracking-widest text-brand-blue group-hover:gap-2 transition-all">Read Disclosure</span>
+                          <span className="text-xs font-black uppercase tracking-widest text-brand-blue group-hover:gap-2 transition-all">{dict.home.read_disclosure}</span>
                           <ArrowRight className="h-4 w-4 text-brand-blue opacity-0 group-hover:opacity-100 transition-all" />
                         </div>
                       </div>
@@ -357,7 +364,7 @@ export function ClientPage({
         </section>
 
         {/* Global Action Footer */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-24 relative overflow-hidden bg-secondary/30 dark:bg-secondary/20">
           <div className="container mx-auto px-6 md:px-12">
             <div className="p-16 rounded-[4rem] bg-[#050f1e] text-white flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-brand-blue/5 opacity-40 animate-pulse" aria-hidden="true" />
@@ -373,7 +380,7 @@ export function ClientPage({
               <div className="relative z-10">
                 <Link href={`/${lang}/contact`}>
                   <Button size="lg" className="rounded-full h-20 px-16 bg-white text-black hover:bg-brand-blue hover:text-white font-black text-lg transition-all duration-700 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:scale-105 active:scale-95">
-                    Initiate Connection
+                    {dict.home.initiate_connection}
                   </Button>
                 </Link>
               </div>

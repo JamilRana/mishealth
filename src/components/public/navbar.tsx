@@ -43,7 +43,7 @@ export function Navbar({ lang, dict }: NavbarProps) {
   const navLinks = [
     { href: `/${lang}/about`, label: dict.nav.about },
     { href: `/${lang}/projects`, label: dict.nav.projects },
-    { href: `/${lang}/statistics`, label: dict.nav.stats },
+    { href: `/${lang}/links`, label: dict.nav.stats },
     { href: `/${lang}/reports`, label: dict.nav.reports },
     { href: `/${lang}/documents`, label: dict.nav.docs },
     { href: `/${lang}/news`, label: dict.nav.news },
@@ -68,8 +68,7 @@ export function Navbar({ lang, dict }: NavbarProps) {
           scrolled 
             ? cn(
                 "max-w-6xl px-5 py-2.5 rounded-full",
-                // Optional: Add subtle background only when scrolled
-                useGlass ? "glass glass-depth" : "bg-background/50 backdrop-blur-md"
+                useGlass ? "glass-strong" : "bg-background/50 backdrop-blur-md"
               ) 
             : "max-w-full" // ✅ No background when at top
         )}>
@@ -84,7 +83,7 @@ export function Navbar({ lang, dict }: NavbarProps) {
                 "text-xl font-black leading-none tracking-tighter transition-colors",
                 scrolled ? "text-foreground" : "text-white drop-shadow-sm"
               )}>
-                MIS <span className="font-serif italic font-normal text-brand-blue/90">Office</span>
+                MIS <span className="font-serif italic font-normal text-brand-blue/90">Portal</span>
               </span>
               <span className={cn(
                 "text-[10px] font-bold uppercase tracking-[0.2em] mt-0.5 opacity-40",
@@ -137,8 +136,8 @@ export function Navbar({ lang, dict }: NavbarProps) {
               </Button>
             </Link>
 
-            {/* Theme Toggle */}
-            {mounted && (
+            {/* Theme Toggle - Only show in light mode to switch to dark */}
+            {mounted && theme === 'light' && (
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -148,21 +147,33 @@ export function Navbar({ lang, dict }: NavbarProps) {
                     ? "text-muted-foreground hover:text-foreground hover:bg-muted" 
                     : "text-white/70 hover:text-white hover:bg-white/10"
                 )}
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                aria-label="Toggle theme"
+                onClick={() => setTheme('dark')}
+                aria-label="Switch to dark mode"
               >
-                <motion.div
-                  initial={false}
-                  animate={{ rotate: theme === 'dark' ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                </motion.div>
+                <Moon className="h-4 w-4" />
+              </Button>
+            )}
+
+            {/* Theme Toggle - Only show in dark mode to switch to light */}
+            {mounted && theme === 'dark' && (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className={cn(
+                  "rounded-full transition-colors",
+                  scrolled 
+                    ? "text-muted-foreground hover:text-foreground hover:bg-muted" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                )}
+                onClick={() => setTheme('light')}
+                aria-label="Switch to light mode"
+              >
+                <Sun className="h-4 w-4" />
               </Button>
             )}
 
             {/* Admin Button */}
-            <Link href={`/${lang}/admin`} className="hidden md:block">
+            {/* <Link href={`/${lang}/admin`} className="hidden md:block">
               <Button size="sm" className={cn(
                 "rounded-full px-6 font-bold text-[10px] uppercase tracking-widest shadow-xl transition-all duration-500 hover:-translate-y-0.5",
                 scrolled 
@@ -216,7 +227,7 @@ export function Navbar({ lang, dict }: NavbarProps) {
                 <div className="flex items-center space-x-3">
                   <div className="h-10 w-10 bg-gradient-brand rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg">M</div>
                   <span className="text-xl font-black tracking-tighter text-white">
-                    MIS <span className="font-serif italic text-brand-blue">Office</span>
+                    MIS <span className="font-serif italic text-brand-blue">Portal</span>
                   </span>
                 </div>
                 <Button 
@@ -257,7 +268,7 @@ export function Navbar({ lang, dict }: NavbarProps) {
 
               {/* Footer Actions */}
               <div className="mt-auto pt-10 flex flex-col md:flex-row gap-6 justify-between border-t border-white/10 items-baseline">
-                <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col gap-2">
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Official Gateway</span>
                   <Link 
                     href={`/${lang}/admin`} 
@@ -266,9 +277,25 @@ export function Navbar({ lang, dict }: NavbarProps) {
                   >
                     Admin Console
                   </Link>
-                </div>
+                </div> */}
                 
                 <div className="flex gap-3">
+                  {mounted && theme === 'light' && (
+                    <Button 
+                      className="glass-btn !bg-white/10 !border-white/20 !text-white hover:!bg-white/20 px-6 py-3 text-xs"
+                      onClick={() => setTheme('dark')}
+                    >
+                      <Moon className="h-4 w-4 mr-2" /> Dark
+                    </Button>
+                  )}
+                  {mounted && theme === 'dark' && (
+                    <Button 
+                      className="glass-btn !bg-white/10 !border-white/20 !text-white hover:!bg-white/20 px-6 py-3 text-xs"
+                      onClick={() => setTheme('light')}
+                    >
+                      <Sun className="h-4 w-4 mr-2" /> Light
+                    </Button>
+                  )}
                   <Link href={toggleLocale()} onClick={() => setIsOpen(false)}>
                     <Button className="glass-btn !bg-white/10 !border-white/20 !text-white hover:!bg-white/20 px-6 py-3 text-xs">
                       <Globe className="h-4 w-4 mr-2" />

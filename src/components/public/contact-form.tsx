@@ -56,13 +56,13 @@ export function ContactForm({ lang }: ContactFormProps) {
 
   if (status === "success") {
     return (
-      <div className="p-12 text-center space-y-6 bg-emerald-50 border border-emerald-100 rounded-3xl transition-all duration-500 shadow-xl shadow-emerald-500/10">
-        <div className="h-20 w-20 bg-emerald-500 rounded-full flex items-center justify-center text-white mx-auto shadow-lg shadow-emerald-500/30">
+      <div className="p-12 text-center space-y-6 bg-green-50 dark:bg-green-950/30 border border-green-100 dark:border-green-900/50 rounded-3xl transition-all duration-500 shadow-xl shadow-green-500/10">
+        <div className="h-20 w-20 bg-green-500 rounded-full flex items-center justify-center text-white mx-auto shadow-lg shadow-green-500/30">
           <CheckCircle2 className="h-10 w-10" />
         </div>
         <div className="space-y-2">
-           <h3 className="text-2xl font-bold text-slate-900">Message Sent!</h3>
-           <p className="text-muted-foreground font-medium">Thank you for contacting the MIS office. We will get back to you soon.</p>
+           <h3 className="text-2xl font-bold text-slate-900 dark:text-green-100">Message Sent!</h3>
+           <p className="text-muted-foreground font-medium">Thank you for contacting the MIS DGHS. We will get back to you soon.</p>
         </div>
         <Button onClick={() => setStatus("idle")} variant="outline" className="rounded-full shadow-sm">
            Send Another Message
@@ -72,15 +72,15 @@ export function ContactForm({ lang }: ContactFormProps) {
   }
 
   return (
-    <div className="w-full bg-white rounded-3xl p-8 md:p-12 border shadow-xl">
+    <div className="w-full bg-white dark:bg-slate-900/50 rounded-3xl p-8 md:p-12 border border-slate-100 dark:border-slate-800 shadow-xl">
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-3">
-             <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
+             <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
              <input 
                {...form.register("name")}
                placeholder="Enter your name"
-               className="w-full h-14 rounded-2xl bg-slate-50 border border-slate-100 px-6 font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
+               className="w-full h-14 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 px-6 font-medium text-foreground dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-slate-800 outline-none transition-all shadow-sm"
              />
              {form.formState.errors.name && (
                <p className="text-xs font-bold text-destructive pl-1 animate-in fade-in slide-in-from-top-1">{form.formState.errors.name.message}</p>
@@ -88,11 +88,11 @@ export function ContactForm({ lang }: ContactFormProps) {
           </div>
 
           <div className="space-y-3">
-             <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Email Address</label>
+             <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest pl-1">Email Address</label>
              <input 
                {...form.register("email")}
                placeholder="name@example.com"
-               className="w-full h-14 rounded-2xl bg-slate-50 border border-slate-100 px-6 font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
+               className="w-full h-14 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 px-6 font-medium text-foreground dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-slate-800 outline-none transition-all shadow-sm"
              />
              {form.formState.errors.email && (
                <p className="text-xs font-bold text-destructive pl-1 animate-in fade-in slide-in-from-top-1">{form.formState.errors.email.message}</p>
@@ -101,11 +101,11 @@ export function ContactForm({ lang }: ContactFormProps) {
         </div>
 
         <div className="space-y-3">
-           <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Inquiry Subject</label>
+           <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest pl-1">Inquiry Subject</label>
            <input 
              {...form.register("subject")}
              placeholder="How can we help you?"
-             className="w-full h-14 rounded-2xl bg-slate-50 border border-slate-100 px-6 font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white outline-none transition-all shadow-sm"
+             className="w-full h-14 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 px-6 font-medium text-foreground dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-slate-800 outline-none transition-all shadow-sm"
            />
            {form.formState.errors.subject && (
              <p className="text-xs font-bold text-destructive pl-1 animate-in fade-in slide-in-from-top-1">{form.formState.errors.subject.message}</p>
@@ -113,12 +113,12 @@ export function ContactForm({ lang }: ContactFormProps) {
         </div>
 
         <div className="space-y-3">
-           <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Message Content</label>
+           <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest pl-1">Message Content</label>
            <textarea 
              {...form.register("message")}
              placeholder="Describe your inquiry in detail..."
              rows={6}
-             className="w-full rounded-2xl bg-slate-50 border border-slate-100 p-6 font-medium focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white outline-none transition-all shadow-sm resize-none"
+             className="w-full rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 p-6 font-medium text-foreground dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white dark:focus:bg-slate-800 outline-none transition-all shadow-sm resize-none"
            />
            {form.formState.errors.message && (
              <p className="text-xs font-bold text-destructive pl-1 animate-in fade-in slide-in-from-top-1">{form.formState.errors.message.message}</p>

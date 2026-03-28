@@ -66,9 +66,9 @@ export default async function ReportsPage({
        <section className="py-24 bg-background relative overflow-hidden">
           <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
              {reports.length === 0 ? (
-                <div className="col-span-full py-32 text-center rounded-[3rem] border border-dashed border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-black/20">
-                   <FileText className="h-16 w-16 text-slate-300 mx-auto mb-6" />
-                   <h4 className="text-2xl font-black text-slate-400">Node Empty</h4>
+                <div className="col-span-full py-32 text-center rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800 bg-secondary/30 dark:bg-transparent">
+                   <FileText className="h-16 w-16 text-muted-foreground/20 mx-auto mb-6" />
+                   <h4 className="text-2xl font-black text-foreground dark:text-white">Node Empty</h4>
                    <p className="text-muted-foreground font-medium mt-2">No reports matched the current sector query.</p>
                 </div>
              ) : (

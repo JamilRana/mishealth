@@ -185,9 +185,9 @@ export default async function ProjectDetailPage({
           </div>
        </section>
 
-       <footer className="py-24 border-t border-slate-50 dark:border-white/5 bg-slate-50/30 dark:bg-black/20 h-fit text-center">
-          <p className="text-[10px] font-black text-slate-300 dark:text-white/10 uppercase tracking-[0.5em]">Official Information Systems Stream of DGHS Bangladesh</p>
-       </footer>
+<footer className="py-24 border-t border-slate-200 bg-secondary/50 h-fit text-center">
+           <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.5em]">Official Information Systems Stream of DGHS Bangladesh</p>
+        </footer>
     </article>
   )
 }

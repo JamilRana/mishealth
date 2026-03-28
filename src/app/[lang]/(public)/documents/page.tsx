@@ -17,6 +17,7 @@ export default async function DocumentsPage({
   const { lang } = await params
   const { category } = await searchParams
   const dict = await getDictionary(lang as Locale)
+  const isBn = lang === "bn"
 
   const documents = await prisma.document.findMany({
     where: category ? { categoryEn: category } : undefined,
@@ -25,24 +26,27 @@ export default async function DocumentsPage({
 
   return (
     <div className="flex flex-col">
-       <header className="relative pt-32 pb-24 bg-slate-50 dark:bg-black/20 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-slate-200/[0.05] dark:bg-grid-white/[0.03] bg-[size:32px_32px]" />
-          <div className="container relative z-10 mx-auto px-6 md:px-12">
-             <div className="max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
-                <div className="flex items-center gap-3 text-brand-blue">
-                   <Database className="w-5 h-5 animate-pulse" />
-                   <span className="text-xs font-black uppercase tracking-[0.4em]">Digital Asset Registry</span>
-                </div>
-                <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black text-foreground dark:text-white leading-[0.95] tracking-tighter">
-                   Platform <br />
-                   <span className="text-brand-blue">Documentation.</span>
-                </h1>
-                <p className="text-lg md:text-xl font-medium text-muted-foreground dark:text-gray-400">
-                   Access official MIS manuals, deployment guides, and national health infrastructure protocols in one unified repository.
-                </p>
-             </div>
+<header className="relative pt-32 pb-24 bg-[#050f1e] text-white overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+            <div className="absolute top-[10%] left-[-10%] h-[700px] w-[700px] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.3)_0%,transparent_70%)] animate-float-slow transition-transform" />
+            <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]" />
           </div>
-       </header>
+          <div className="container relative z-10 mx-auto px-6 md:px-12">
+              <div className="max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+                 <div className="flex items-center gap-3 text-brand-blue">
+                    <Database className="w-5 h-5 animate-pulse" />
+                    <span className="text-xs font-black uppercase tracking-[0.4em]">{dict.docs.title1} {dict.docs.title2} </span>
+                 </div>
+                 <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black text-white leading-[0.95] tracking-tighter">
+                    {dict.docs.title1} <br />
+                    <span className="text-brand-blue italic font-serif font-normal">{dict.docs.title2}</span>
+                 </h1>
+                 <p className="text-lg md:text-xl font-medium text-white/60">
+                    {dict.docs.subtitle}
+                 </p>
+              </div>
+           </div>
+        </header>
 
        <section className="py-24 bg-background relative">
           <div className="container mx-auto px-6 md:px-12">

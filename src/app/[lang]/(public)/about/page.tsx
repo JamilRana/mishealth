@@ -32,12 +32,12 @@ export default async function AboutPage({
                 <div className="space-y-6">
                    <div className="flex items-center gap-4">
                       <div className="h-0.5 w-12 bg-brand-blue rounded-full" />
-                      <span className="text-xs md:text-sm font-black text-brand-blue uppercase tracking-[0.4em]">Governance & Policy</span>
+                      <span className="text-xs md:text-sm font-black text-brand-blue uppercase tracking-[0.4em]">{dict.about.governance_policy}</span>
                    </div>
-                   <h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-black leading-[0.98] tracking-tighter text-white">
-                      The core <br />
-                      <span className="text-brand-blue italic font-serif font-normal">{isBn ? 'পরিচালনা ইউনিট।' : 'MIS Unit.'}</span>
-                   </h1>
+<h1 className="text-[clamp(2.8rem,7vw,5.5rem)] font-black leading-[0.98] tracking-tighter text-white">
+                       The core <br />
+                       <span className="text-brand-blue italic font-serif font-normal">{isBn ? dict.about.mis_unit : dict.about.mis_unit}</span>
+                    </h1>
                    <p className="max-w-xl text-lg md:text-xl text-white/50 font-medium leading-relaxed">
                       Maintaining the digital backbone of DGHS Bangladesh. Facilitating secure health data governance with architectural excellence.
                    </p>
@@ -51,14 +51,14 @@ export default async function AboutPage({
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-center">
                 <div className="space-y-12">
                    <div className="space-y-6">
-                      <div className="flex items-center gap-3">
-                         <div className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
-                         <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em]">Institutional Mission</span>
-                      </div>
-                      <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                         Integrity across <br />
-                         <span className="text-brand-blue">National Datasets.</span>
-                      </h2>
+<div className="flex items-center gap-3">
+                          <div className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
+                          <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em]">{dict.about.institutional_mission}</span>
+                       </div>
+                       <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+                          Integrity across <br />
+                          <span className="text-brand-blue">{isBn ? dict.about.national_datasets : dict.about.national_datasets}</span>
+                       </h2>
                    </div>
                    <div className="prose prose-lg dark:prose-invert max-w-none prose-p:text-muted-foreground prose-p:font-medium text-slate-600 dark:text-gray-400">
                       <p>
@@ -68,18 +68,18 @@ export default async function AboutPage({
                          Our directive involves standardizing data protocols and ensuring high-availability systems for clinical operations at every level of governance.
                       </p>
                    </div>
-                   <div className="grid grid-cols-2 gap-8 pt-8">
-                      <div className="p-10 rounded-[2.5rem] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 group hover:shadow-2xl transition-all duration-700">
-                         <CheckCircle2 className="h-10 w-10 text-brand-blue mb-6 group-hover:scale-110 transition-transform" />
-                         <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">Data Integrity</p>
-                         <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-2">Zero Trust Architecture</p>
-                      </div>
-                      <div className="p-10 rounded-[2.5rem] bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 group hover:shadow-2xl transition-all duration-700">
-                         <Users className="h-10 w-10 text-brand-purple mb-6 group-hover:scale-110 transition-transform" />
-                         <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">Nationwide</p>
-                         <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-2">160M Citizen Outreach</p>
-                      </div>
-                   </div>
+<div className="grid grid-cols-2 gap-8 pt-8">
+                       <div className="p-10 rounded-[2.5rem] bg-secondary dark:bg-white/5 border border-slate-100 dark:border-white/10 group hover:shadow-2xl transition-all duration-700">
+                          <CheckCircle2 className="h-10 w-10 text-brand-blue mb-6 group-hover:scale-110 transition-transform" />
+                          <p className="text-2xl font-black text-foreground dark:text-white tracking-tight leading-tight">{dict.about.data_integrity}</p>
+                          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground dark:text-slate-400 mt-2">{dict.about.zero_trust}</p>
+                       </div>
+                       <div className="p-10 rounded-[2.5rem] bg-secondary dark:bg-white/5 border border-slate-100 dark:border-white/10 group hover:shadow-2xl transition-all duration-700">
+                          <Users className="h-10 w-10 text-brand-purple mb-6 group-hover:scale-110 transition-transform" />
+                          <p className="text-2xl font-black text-foreground dark:text-white tracking-tight leading-tight">{dict.about.nationwide}</p>
+                          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground dark:text-slate-400 mt-2">160M Citizen Outreach</p>
+                       </div>
+                    </div>
                 </div>
                 
                 <div className="relative group perspective-[1000px]">
@@ -91,11 +91,11 @@ export default async function AboutPage({
                       </div>
                       <div className="absolute bottom-12 left-12 right-12 p-10 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[3rem] space-y-4">
                          <div className="flex items-center gap-3">
-                            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">Live Infrastructure</span>
+<span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                             <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">{dict.about.live_infrastructure}</span>
                          </div>
                          <h4 className="text-2xl font-black text-white leading-tight">MIS Operational Command Center</h4>
-                         <p className="text-white/50 text-sm font-medium">Headquarters: Mohakhali, Dhaka, Bangladesh</p>
+                         <p className="text-white/50 text-sm font-medium">{dict.about.headquarters}</p>
                       </div>
                    </div>
                 </div>
@@ -107,14 +107,14 @@ export default async function AboutPage({
           <div className="container mx-auto px-6 md:px-12 space-y-24">
              <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
                 <div className="space-y-6">
-                   <div className="flex items-center gap-3">
-                      <div className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
-                      <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em] font-sans">Core Leadership</span>
-                   </div>
-                   <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight">
-                      Architects of our <br />
-                      <span className="italic font-serif font-normal text-brand-blue">{isBn ? 'ডিজিটাল ভবিষ্যৎ।' : 'digital future.'}</span>
-                   </h2>
+<div className="flex items-center gap-3">
+                       <div className="h-1.5 w-1.5 rounded-full bg-brand-blue" />
+                       <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em] font-sans">{dict.about.core_leadership}</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight">
+                       Architects of our <br />
+                       <span className="italic font-serif font-normal text-brand-blue">{isBn ? dict.about.digital_future : dict.about.digital_future}</span>
+                    </h2>
                 </div>
                 <Link href={`/${lang}/contact`}>
                    <Button variant="outline" size="lg" className="rounded-2xl h-14 md:h-18 px-12 gap-3 border-white/10 text-white hover:bg-white hover:text-black transition-all group">
@@ -172,23 +172,23 @@ export default async function AboutPage({
                 <div className="space-y-4">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <ShieldCheck className="h-6 w-6 text-brand-blue" />
-                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Compliance</h4>
+                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{dict.about.compliance}</h4>
                    </div>
-                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">Aligned with international digital health standards and national cybersecurity protocols.</p>
+                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">{dict.about.compliance_desc}</p>
                 </div>
                 <div className="space-y-4">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <Database className="h-6 w-6 text-brand-purple" />
-                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Ecosystem</h4>
+                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{dict.about.ecosystem}</h4>
                    </div>
-                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">Integrating clinical databases with national health identification stream services.</p>
+                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">{dict.about.ecosystem_desc}</p>
                 </div>
                 <div className="space-y-4">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <TrendingUp className="h-6 w-6 text-brand-green" />
-                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">Governance</h4>
+                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{dict.about.governance}</h4>
                    </div>
-                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">Real-time health statistics visualization for institutional oversight and policy modeling.</p>
+                   <p className="text-muted-foreground text-sm font-medium leading-relaxed mt-2">{dict.about.governance_desc}</p>
                 </div>
              </div>
           </div>

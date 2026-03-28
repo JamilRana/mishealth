@@ -7,8 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | MIS Office Portal - DGHS Bangladesh",
-    default: "MIS Office Portal | DGHS Bangladesh",
+    template: "%s | MIS Portal - DGHS Bangladesh",
+    default: "MIS Portal | DGHS Bangladesh",
   },
   description: "Official Management Information System (MIS) Portal, Directorate General of Health Services (DGHS), Bangladesh. Monitoring national digital health transformation.",
   keywords: ["MIS", "DGHS", "Health Information System", "Bangladesh", "Digital Health"],
@@ -50,7 +50,7 @@ export default async function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

@@ -78,47 +78,112 @@
 }
 
 /* =============================================================================
-   COLOR SCHEMES
+   COLOR SCHEMES - Elevation Layers (MIS/Dashboard Optimized)
    ============================================================================= */
 :root {
-  --background: oklch(0.98 0.01 70);
+  /* === LIGHT MODE === */
+  
+  /* Base layer - Solid & Stable */
+  --background: oklch(0.99 0.01 70);
   --foreground: oklch(0.12 0.02 260);
+  
+  /* Surface layer (mid-layer between background and card) */
+  --surface: oklch(0.98 0.01 70);
+  
+  /* Card layer (floating elements) */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.12 0.02 260);
+  
+  /* Surface elevated (modals, dropdowns, top-tier elements) */
+  --surface-elevated: oklch(1 0 0);
+  --surface-elevated-foreground: oklch(0.12 0.02 260);
+  
+  /* Primary actions */
   --primary: oklch(0.12 0.02 260);
-  --primary-foreground: oklch(0.98 0.01 70);
+  --primary-foreground: oklch(0.99 0.01 70);
+  
+  /* Secondary/section backgrounds */
   --secondary: oklch(0.94 0.02 70);
   --secondary-foreground: oklch(0.12 0.02 260);
+  
+  /* Muted/subtle areas */
   --muted: oklch(0.94 0.02 70);
   --muted-foreground: oklch(0.45 0.03 260);
-  --accent: oklch(0.94 0.02 70);
+  
+  /* Accent highlights */
+  --accent: oklch(0.92 0.02 70);
   --accent-foreground: oklch(0.12 0.02 260);
+  
+  /* Semantic colors */
   --destructive: oklch(0.6 0.18 25);
-  --destructive-foreground: oklch(0.98 0.01 70);
-  --border: oklch(0.12 0.02 260 / 0.1);
-  --input: oklch(0.12 0.02 260 / 0.1);
-  --ring: oklch(0.12 0.02 260 / 0.2);
+  --destructive-foreground: oklch(0.99 0.01 70);
+  
+  /* Borders - Soft contrast in light mode */
+  --border: oklch(0.12 0.02 260 / 0.06);
+  --border-strong: oklch(0.12 0.02 260 / 0.12);
+  --input: oklch(0.12 0.02 260 / 0.08);
+  --ring: oklch(0.12 0.02 260 / 0.15);
+  
+  /* Footer (Dark by design on light page) */
+  --footer-bg: oklch(0.08 0.02 260);
+  --footer-fg: oklch(0.98 0.01 70);
+  --footer-border: oklch(1 0 0 / 0.1);
+  --footer-muted: oklch(1 0 0 / 0.4);
+  --footer-muted-strong: oklch(1 0 0 / 0.7);
+  
   --radius: 1.5rem;
 }
 
 .dark {
-  --background: oklch(0.12 0.02 260);
-  --foreground: oklch(0.96 0.01 70);
-  --card: oklch(0.15 0.02 260);
-  --card-foreground: oklch(0.96 0.01 70);
-  --primary: oklch(0.96 0.01 70);
-  --primary-foreground: oklch(0.12 0.02 260);
-  --secondary: oklch(0.18 0.03 260);
-  --secondary-foreground: oklch(0.96 0.01 70);
-  --muted: oklch(0.18 0.03 260);
+  /* === DARK MODE === */
+  
+  /* Base layer - Deep & Non-reflective */
+  --background: oklch(0.15 0.02 260);
+  --foreground: oklch(0.95 0.01 70);
+  
+  /* Surface layer (subtle lift - replaces shadows) */
+  --surface: oklch(0.18 0.02 260);
+  
+  /* Card layer (elevated elements) */
+  --card: oklch(0.18 0.02 260);
+  --card-foreground: oklch(0.95 0.01 70);
+  
+  /* Surface elevated (modals, dropdowns) */
+  --surface-elevated: oklch(0.22 0.02 260);
+  --surface-elevated-foreground: oklch(0.95 0.01 70);
+  
+  /* Primary actions */
+  --primary: oklch(0.95 0.01 70);
+  --primary-foreground: oklch(0.15 0.02 260);
+  
+  /* Secondary/section backgrounds */
+  --secondary: oklch(0.22 0.03 260);
+  --secondary-foreground: oklch(0.95 0.01 70);
+  
+  /* Muted/subtle areas */
+  --muted: oklch(0.22 0.03 260);
   --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.18 0.03 260);
-  --accent-foreground: oklch(0.96 0.01 70);
+  
+  /* Accent highlights */
+  --accent: oklch(0.24 0.03 260);
+  --accent-foreground: oklch(0.95 0.01 70);
+  
+  /* Semantic colors */
   --destructive: oklch(0.5 0.15 25);
-  --destructive-foreground: oklch(0.96 0.01 70);
-  --border: oklch(0.96 0.01 70 / 0.1);
-  --input: oklch(0.96 0.01 70 / 0.1);
-  --ring: oklch(0.96 0.01 70 / 0.3);
+  --destructive-foreground: oklch(0.95 0.01 70);
+  
+  /* Borders - Lighter in dark mode for visibility (since shadows are off) */
+  --border: oklch(1 0 0 / 0.08);
+  --border-strong: oklch(1 0 0 / 0.15);
+  --input: oklch(1 0 0 / 0.08);
+  --ring: oklch(1 0 0 / 0.2);
+  
+  /* Footer (Basement layer - deeper than page base) */
+  --footer-bg: oklch(0.08 0.01 260);
+  --footer-fg: oklch(0.92 0.01 70);
+  --footer-border: oklch(1 0 0 / 0.08);
+  --footer-muted: oklch(0.92 0.01 70 / 0.4);
+  --footer-muted-strong: oklch(0.92 0.01 70 / 0.7);
 }
 
 /* =============================================================================
@@ -154,49 +219,58 @@
 }
 
 /* =============================================================================
-   GLASS MORPHISM UTILITIES (Native CSS - No @apply)
+   GLASS MORPHISM UTILITIES
    ============================================================================= */
 
+/* Light glass - subtle transparency with shadow */
 .glass {
-  background-color: oklch(1 0 0 / 0.6);
+  background-color: oklch(1 0 0 / 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid oklch(1 0 0 / 0.2);
-  box-shadow: 0 4px 24px oklch(0 0 0 / 0.05);
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.06);
 }
 
+/* Dark glass - use lighter background + border, minimal shadow */
 .dark .glass {
-  background-color: oklch(0.15 0.02 260 / 0.6);
-  border: 1px solid oklch(1 0 0 / 0.1);
-  box-shadow: 0 4px 24px oklch(0 0 0 / 0.2);
+  background-color: oklch(0.16 0.02 260 / 0.7);
+  border: 1px solid oklch(1 0 0 / 0.12);
+  box-shadow: none;
 }
 
+/* Strong glass - navbar/sticky headers */
 .glass-strong {
-  background-color: oklch(1 0 0 / 0.8);
+  background-color: oklch(1 0 0 / 0.85);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  border: 1px solid oklch(1 0 0 / 0.3);
+  border: 1px solid oklch(1 0 0 / 0.25);
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.08);
 }
 
 .dark .glass-strong {
-  background-color: oklch(0.15 0.02 260 / 0.8);
-  border: 1px solid oklch(1 0 0 / 0.15);
+  background-color: oklch(0.2 0.02 260 / 0.95); /* Slightly lighter than 0.15 base */
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
 }
 
+/* Depth glass - layered cards */
 .glass-depth {
+  background-color: oklch(1 0 0 / 0.9);
   box-shadow: 
-    inset 0 1px 0 oklch(1 0 0 / 0.1),
-    inset 0 -1px 0 oklch(0 0 0 / 0.05),
-    0 4px 24px oklch(0 0 0 / 0.08);
+    inset 0 1px 0 oklch(1 0 0 / 0.15),
+    inset 0 -1px 0 oklch(0 0 0 / 0.03),
+    0 8px 32px oklch(0 0 0 / 0.06);
 }
 
 .dark .glass-depth {
+  background-color: oklch(0.16 0.02 260 / 0.9);
   box-shadow: 
-    inset 0 1px 0 oklch(1 0 0 / 0.05),
-    inset 0 -1px 0 oklch(0 0 0 / 0.2),
-    0 4px 24px oklch(0 0 0 / 0.4);
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    inset 0 -1px 0 oklch(0 0 0 / 0.15),
+    0 0 0 1px oklch(1 0 0 / 0.08);
 }
 
+/* Glow border effect */
 .glass-border-glow {
   position: relative;
 }
@@ -231,6 +305,7 @@
   100% { background-position: 200% 0; }
 }
 
+/* Noise texture overlay */
 .glass-noise {
   position: relative;
 }
@@ -241,11 +316,12 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
 
+/* Interactive glass hover */
 .glass-hover {
   transition: all 0.3s ease-out;
   will-change: transform, box-shadow;
@@ -254,16 +330,17 @@
 .glass-hover:hover {
   transform: translateY(-2px);
   box-shadow: 
-    0 8px 32px oklch(0 0 0 / 0.12),
+    0 12px 40px oklch(0 0 0 / 0.1),
     0 0 0 1px oklch(0.55 0.22 260 / 0.1);
 }
 
 .dark .glass-hover:hover {
+  transform: translateY(-2px);
   box-shadow: 
-    0 8px 32px oklch(0 0 0 / 0.4),
     0 0 0 1px oklch(0.65 0.2 260 / 0.15);
 }
 
+/* Glass button */
 .glass-btn {
   background-color: oklch(1 0 0 / 0.6);
   backdrop-filter: blur(24px);
@@ -280,29 +357,70 @@
 }
 
 .dark .glass-btn {
-  background-color: oklch(0.15 0.02 260 / 0.6);
+  background-color: oklch(0.16 0.02 260 / 0.6);
   border: 1px solid oklch(1 0 0 / 0.1);
-  color: oklch(0.96 0.01 70 / 0.8);
+  color: oklch(0.95 0.01 70 / 0.8);
 }
 
 .glass-btn:hover {
   transform: translateY(-1px);
-  background-color: oklch(1 0 0 / 0.8);
+  background-color: oklch(1 0 0 / 0.85);
 }
 
 .dark .glass-btn:hover {
-  background-color: oklch(0.15 0.02 260 / 0.8);
+  background-color: oklch(0.18 0.02 260 / 0.8);
 }
 
+/* Glass overlay (mobile nav, modals) */
 .glass-overlay {
-  background-color: oklch(0.12 0.02 260 / 0.95);
+  background-color: oklch(0.08 0.02 260 / 0.95);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  border-top: 1px solid oklch(1 0 0 / 0.1);
+  border-bottom: 1px solid oklch(1 0 0 / 0.08);
 }
 
 .dark .glass-overlay {
-  background-color: oklch(0.05 0.01 260 / 0.95);
+  background-color: oklch(0.08 0.015 260 / 0.97);
+  border-bottom-color: oklch(1 0 0 / 0.06);
+}
+
+/* =============================================================================
+   SECTION ELEVATION UTILITIES
+   ============================================================================= */
+
+/* Section alternate - use with bg-surface */
+.bg-surface {
+  background-color: var(--surface);
+}
+
+/* Section divider - use border-strong for clearer separation */
+.border-section {
+  border-color: var(--border-strong);
+}
+
+/* =============================================================================
+   FOOTER TOKEN INTEGRATION
+   ============================================================================= */
+
+/* Apply footer tokens - component will use these */
+.bg-footer {
+  background-color: var(--footer-bg);
+}
+
+.text-footer {
+  color: var(--footer-fg);
+}
+
+.text-footer-muted {
+  color: var(--footer-muted);
+}
+
+.text-footer-muted-strong {
+  color: var(--footer-muted-strong);
+}
+
+.border-footer {
+  border-color: var(--footer-border);
 }
 
 /* =============================================================================
@@ -327,7 +445,6 @@
   );
 }
 
-/* Add to globals.css if not present */
 .bg-background\/90 {
   background-color: oklch(0.98 0.01 70 / 0.9);
 }
@@ -336,10 +453,10 @@
 }
 
 .border-border {
-  border-color: oklch(0.12 0.02 260 / 0.1);
+  border-color: var(--border);
 }
 .dark .border-border {
-  border-color: oklch(0.96 0.01 70 / 0.1);
+  border-color: var(--border);
 }
 
 .hover\:bg-muted\/50:hover {

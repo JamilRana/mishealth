@@ -12,6 +12,7 @@ const contactSchema = z.object({
 export async function POST(req: Request) {
   try {
     const body = await req.json()
+    console.log("Received message:", body)
     const validated = contactSchema.parse(body)
 
     const message = await prisma.message.create({
@@ -19,17 +20,18 @@ export async function POST(req: Request) {
         name: validated.name,
         email: validated.email,
         subject: validated.subject,
-        body: validated.message, // Map 'message' from form to 'body' in schema
+        body: validated.message,
         resolved: false,
       },
     })
 
+    console.log("Message created:", message.id)
     return NextResponse.json({ success: true, id: message.id })
   } catch (error) {
     console.error("API Error [POST /api/messages]:", error)
     if (error instanceof z.ZodError) {
       return NextResponse.json({ error: "Invalid Data", details: error.errors }, { status: 400 })
     }
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
+    return NextResponse.json({ error: "Internal Server Error", message: String(error) }, { status: 500 })
   }
 }

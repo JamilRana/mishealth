@@ -39,12 +39,12 @@ export default async function ProjectsPage({
              <div className="space-y-10 animate-in fade-in slide-in-from-bottom-12 duration-1000">
                 <div className="flex items-center gap-4">
                    <div className="h-0.5 w-12 bg-brand-blue rounded-full" />
-                   <span className="text-xs md:text-sm font-black text-brand-blue uppercase tracking-[0.4em]">Infrastructure Archive</span>
+                   <span className="text-xs md:text-sm font-black text-brand-blue uppercase tracking-[0.4em]">{dict.projects.infrastructure_archive}</span>
                 </div>
-                <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black leading-[0.98] tracking-tighter text-white">
-                   The National <br />
-                   <span className="text-brand-blue italic font-serif font-normal">{isBn ? 'প্রকল্প পোর্টফোলিও।' : 'Portfolio.'}</span>
-                </h1>
+<h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-black leading-[0.98] tracking-tighter text-white">
+                    The National <br />
+                    <span className="text-brand-blue italic font-serif font-normal">{isBn ? dict.projects.portfolio : dict.projects.portfolio}</span>
+                 </h1>
                 <p className="max-w-xl text-lg md:text-xl text-white/50 font-medium leading-relaxed">
                    Comprehensive registry of national digital health initiatives, MIS deployments, and infrastructure assets under the DGHS stewardship.
                 </p>
@@ -52,10 +52,10 @@ export default async function ProjectsPage({
              
              <div className="hidden lg:flex flex-col items-end gap-6 text-right pb-4">
                 <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl flex items-center gap-6 group">
-                   <div className="flex flex-col">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-brand-blue">Total Deployments</span>
-                      <span className="text-4xl font-black text-white">{projects.length}+ Major Assets</span>
-                   </div>
+<div className="flex flex-col">
+                       <span className="text-[10px] font-black uppercase tracking-widest text-brand-blue">{dict.projects.total_deployments}</span>
+                       <span className="text-4xl font-black text-white">{projects.length}+ Major Assets</span>
+                    </div>
                    <div className="h-14 w-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue transition-transform duration-500 group-hover:scale-110">
                       <ShieldCheck className="w-8 h-8" />
                    </div>
@@ -73,15 +73,15 @@ export default async function ProjectsPage({
                    <div className="space-y-6">
                       <div className="flex items-center gap-3">
                          <Filter className="h-4 w-4 text-brand-blue" />
-                         <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Operational Sector</span>
+                         <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{dict.projects.operational_sector}</span>
                       </div>
-                      <div className="flex flex-col gap-2">
-                         {[dict.projects.ongoing, dict.projects.completed].map((status) => (
-                           <div key={status} className="px-6 py-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-brand-blue/30 transition-all cursor-pointer group">
-                              <span className="text-[11px] font-black text-slate-400 group-hover:text-brand-blue transition-colors uppercase tracking-[0.2em]">{status}</span>
-                           </div>
-                         ))}
-                      </div>
+<div className="flex flex-col gap-2">
+                          {[dict.projects.ongoing, dict.projects.completed].map((status) => (
+                            <div key={status} className="px-6 py-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-secondary/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-brand-blue/30 transition-all cursor-pointer group">
+                               <span className="text-[11px] font-black text-muted-foreground dark:text-slate-400 group-hover:text-brand-blue transition-colors uppercase tracking-[0.2em]">{status}</span>
+                            </div>
+                          ))}
+                       </div>
                    </div>
                    
                    <div className="p-10 rounded-[3rem] bg-[#050f1e] text-white space-y-8 relative overflow-hidden group">
@@ -102,12 +102,12 @@ export default async function ProjectsPage({
 
                 {/* Projects Showcase Container */}
                 <div className="space-y-12">
-                   {projects.length === 0 ? (
-                     <div className="p-32 text-center rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/5 bg-slate-50/30 dark:bg-transparent">
-                        <Database className="h-16 w-16 text-slate-300 mx-auto mb-6" />
-                        <h4 className="text-2xl font-black text-slate-400">Node Empty</h4>
-                        <p className="text-muted-foreground font-medium mt-2">No infrastructure records found for this Sector.</p>
-                     </div>
+{projects.length === 0 ? (
+                      <div className="p-32 text-center rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-slate-800 bg-secondary/30 dark:bg-transparent">
+                         <Database className="h-16 w-16 mx-auto text-muted-foreground/20 mb-6" />
+                         <h4 className="text-2xl font-black text-foreground dark:text-white">{dict.projects.node_empty}</h4>
+                         <p className="text-muted-foreground font-medium mt-2">{dict.projects.no_infrastructure}</p>
+                      </div>
                    ) : (
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-16 md:gap-y-24">
                         {projects.map((project, i) => (
@@ -130,12 +130,12 @@ export default async function ProjectsPage({
           </div>
        </section>
 
-       <section className="py-16">
-          <div className="container mx-auto px-6 md:px-12 flex items-center justify-center p-10 rounded-[3.5rem] bg-slate-50 border border-slate-100 relative group overflow-hidden">
+<section className="py-16">
+          <div className="container mx-auto px-6 md:px-12 flex items-center justify-center p-10 rounded-[3.5rem] bg-secondary dark:bg-white/5 border border-slate-100 dark:border-white/10 relative group overflow-hidden">
              <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Activity className="h-24 w-24" />
              </div>
-             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] relative z-10">End of Infrastructure Registry Nodes</p>
+             <p className="text-[10px] font-black text-muted-foreground dark:text-slate-400 uppercase tracking-[0.4em] relative z-10">{dict.projects.end_of_registry}</p>
           </div>
        </section>
     </div>
