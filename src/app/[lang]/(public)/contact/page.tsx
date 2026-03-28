@@ -1,10 +1,8 @@
 import * as React from "react"
-import prisma from "@/lib/prisma"
 import { getDictionary } from "@/lib/get-dictionary"
 import type { Locale } from "@/i18n-config"
 import { ContactForm } from "@/components/public/contact-form"
-import { Mail, MapPin, Phone, Send, Globe } from "lucide-react"
-import Link from "next/link"
+import { Mail, MapPin, Phone, Globe } from "lucide-react"
 
 export default async function ContactPage({
   params,

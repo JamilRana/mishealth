@@ -112,8 +112,8 @@ export default async function AboutPage({
                        <span className="text-xs font-black text-brand-blue uppercase tracking-[0.3em] font-sans">{dict.about.core_leadership}</span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight">
-                       Architects of our <br />
-                       <span className="italic font-serif font-normal text-brand-blue">{isBn ? dict.about.digital_future : dict.about.digital_future}</span>
+                       Our Team <br />
+                       <span className="italic font-serif font-normal text-brand-blue">{isBn ? dict.about.mis_unit : dict.about.mis_unit}</span>
                     </h2>
                 </div>
                 <Link href={`/${lang}/contact`}>

@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma"
 import { getDictionary } from "@/lib/get-dictionary"
 import type { Locale } from "@/i18n-config"
 import { Button } from "@/components/ui/button"
-import { TrendingUp, Database, ArrowRight, Activity, Zap, ShieldCheck, Search, Filter } from "lucide-react"
+import { TrendingUp, Database, ArrowRight, Activity, Zap, ShieldCheck, Filter } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ProjectCard } from "@/components/public/project-card"
 

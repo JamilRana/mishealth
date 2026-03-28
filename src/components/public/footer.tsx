@@ -1,6 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
-import { Phone, Mail, MapPin, ArrowUpRight, Facebook, Twitter, Youtube, ChevronRight } from "lucide-react"
+import { ArrowUpRight, Facebook, Twitter, Youtube, ChevronRight } from "lucide-react"
 import type { Locale } from "@/i18n-config"
 import { cn } from "@/lib/utils"
 

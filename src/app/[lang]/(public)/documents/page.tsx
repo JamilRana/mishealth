@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma"
 import { getDictionary } from "@/lib/get-dictionary"
 import type { Locale } from "@/i18n-config"
 import { Button } from "@/components/ui/button"
-import { FileSearch, Download, Search, Tag, Filter, Database, ArrowRight, ShieldCheck, Newspaper } from "lucide-react"
+import { FileSearch, Download, Search, Filter, Database, ShieldCheck } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export default async function DocumentsPage({
